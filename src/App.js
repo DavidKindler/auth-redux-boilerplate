@@ -1,5 +1,6 @@
 import React from 'react';
-import { HashRouter as Router, Route, Redirect, Link, withRouter } from 'react-router-dom';
+import { Route, Redirect, Link, withRouter, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router'
 import PrivateRoute from './containers/PrivateRoute';
 import fakeAuth from './containers/fakeAuth';
 import Login from './components/Login';
@@ -25,11 +26,12 @@ const AuthButton = withRouter((props) => {
   )
 })
 
-function AuthExample() {
+function AuthExample({ history }) {
   return (
-    <Router>
-      <div>
-        <AuthButton />
+    // <ConnectedRouter history={history}>
+    <div>
+      <AuthButton />
+      <Switch>
         <Route path="/login" component={Login} />
         <ul>
           <li><Link to="/public">Public Page</Link></li>
@@ -37,8 +39,9 @@ function AuthExample() {
         </ul>
         <Route path="/public" component={Public} />
         <PrivateRoute path='/protected' component={Protected} />
-      </div>
-    </Router>
+      </Switch>
+    </div>
+    // </ConnectedRouter>
   )
 }
 
