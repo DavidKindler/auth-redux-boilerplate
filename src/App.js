@@ -1,7 +1,9 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import { HashRouter as Router, Route, Redirect, Link, withRouter } from 'react-router-dom';
 import PrivateRoute from './containers/PrivateRoute';
 import fakeAuth from './containers/fakeAuth';
+import Login from './components/Login';
+
 
 const Public = () => <h3>Public</h3>
 const Protected = () => <h3>Protected</h3>
@@ -9,7 +11,7 @@ const Protected = () => <h3>Protected</h3>
 
 
 const AuthButton = withRouter((props) => {
-  const { from } = props.location.state || { from: { pathname: '/' } }
+  // const { from } = props.location.state || { from: { pathname: '/' } }
   return (
     fakeAuth.isAuthenticated ? (
       <p>
@@ -18,12 +20,7 @@ const AuthButton = withRouter((props) => {
         }}>Sign out</button>
       </p>
     ) : (
-        <>
-          <p>You are not logged in.</p>
-          <button onClick={() => {
-            fakeAuth.authenticate(() => props.history.push(from))
-          }}>Login</button>
-        </>
+        <div>You are not logged in.  <Redirect to="/login" /> </div>
       )
   )
 })
@@ -33,12 +30,12 @@ function AuthExample() {
     <Router>
       <div>
         <AuthButton />
+        <Route path="/login" component={Login} />
         <ul>
           <li><Link to="/public">Public Page</Link></li>
           <li><Link to="/protected">Protected Page</Link></li>
         </ul>
         <Route path="/public" component={Public} />
-        {/* <Route path="/login" component={Login} /> */}
         <PrivateRoute path='/protected' component={Protected} />
       </div>
     </Router>

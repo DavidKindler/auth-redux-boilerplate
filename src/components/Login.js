@@ -23,9 +23,6 @@ class Login extends React.Component {
 
     return (
       <button onClick={this.login}>Log in</button>
-      // <div>
-      // <p>You must log in to view the page</p> 
-      // </div>
     )
   }
 }
