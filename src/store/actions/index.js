@@ -7,5 +7,7 @@ export {
   authFail,
   checkAuthTimeout,
   setAuthRedirectPath,
-  authCheckState
+  authCheckState,
+  setName,
+  setEmail
 } from './auth';

@@ -9,3 +9,5 @@ export const AUTH_REDIRECT_PATH = 'AUTH_REDIRECT_PATH';
 export const AUTH_CHECK_TIMEOUT = 'AUTH_CHECK_TIMEOUT';
 export const AUTH_CHECK_STATE = 'AUTH_CHECK_STATE';
 
+export const SET_NAME = 'SET_NAME'
+export const SET_EMAIL = 'SET_EMAIL'

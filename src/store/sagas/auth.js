@@ -1,4 +1,5 @@
-import { put, select, delay } from 'redux-saga/effects';
+import { put, call, select, delay } from 'redux-saga/effects';
+import { push } from 'connected-react-router'
 // import * as actionTypes from '../actions/ActionTypes';
 import * as actions from '../actions/index';
 import axios from 'axios';
@@ -6,6 +7,14 @@ import axios from 'axios';
 export function* logoutSaga(action) {
   yield localStorage.removeItem('loginData');
   yield put(actions.logoutSucceed());
+}
+
+export function* login(username, password) {
+
+  /* do something before redirection */
+  const from = (this.props.location.state && this.props.location.state.from) || this.props.location.pathname || { from: { pathname: '/' } }
+  // yield put(push('/'))
+  yield put(push(from))
 }
 
 export function* checkAuthTimeoutSaga(action) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, withRouter } from 'react-router-dom';
+import { Route, Redirect, Link, withRouter } from 'react-router-dom';
 import PrivateRoute from './containers/PrivateRoute';
 import fakeAuth from './containers/fakeAuth';
 import Login from './components/Login';
@@ -16,7 +16,9 @@ const AuthButton = withRouter((props) => {
     fakeAuth.isAuthenticated ? (
       <div>Welcome! <Logout {...props} /> </div>
     ) : (
-        <div>You are not logged in.  <Login {...props} /> </div>
+        <>
+          <div>You are not logged in.  <Login {...props} to="/login" /> </div>
+        </>
       )
   )
 })

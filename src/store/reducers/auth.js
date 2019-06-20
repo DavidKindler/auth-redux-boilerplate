@@ -7,12 +7,22 @@ const initialState = {
   token: null,
   userId: null,
   authRedirectPath: '/',
-  name: null,
-  email: null
+  name: '',
+  email: ''
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_NAME:
+      return {
+        ...state,
+        name: action.name,
+      };
+    case actionTypes.SET_EMAIL:
+      return {
+        ...state,
+        email: action.email
+      };
     case actionTypes.AUTH_START:
       return {
         ...state,

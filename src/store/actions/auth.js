@@ -7,6 +7,20 @@ export const authStart = loginData => {
   };
 };
 
+export const setName = name => {
+  return {
+    type: actionTypes.SET_NAME,
+    name: name
+  };
+}
+
+export const setEmail = email => {
+  return {
+    type: actionTypes.SET_EMAIL,
+    email: email
+  };
+};
+
 export const authSuccess = loginData => {
   return {
     type: actionTypes.AUTH_SUCCESS,
